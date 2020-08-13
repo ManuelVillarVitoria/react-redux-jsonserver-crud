@@ -9,6 +9,10 @@ const NuevoProducto = () => {
     const [precio, guardarPrecio] = useState(0);
 
     const dispatch = useDispatch();
+
+    const cargando = useSelector(state => state.productos.loading);
+    const error = useSelector(state => state.productos.error);
+
     const agregarProducto = producto => dispatch( crearNuevoProductoAction(producto)) ;
 
     const submitNuevoProducto = e => {
@@ -24,7 +28,7 @@ const NuevoProducto = () => {
         });
     }
 
-
+    
     return (
         <div className="row justify-content-center">
             <div className="col-md-8">
@@ -68,6 +72,11 @@ const NuevoProducto = () => {
                                 Agregar
                             </button>
                         </form>
+
+                        { cargando && <p>Cargando...</p> }
+
+                        { error && <p className="alert alert-danger p-2 mt-4 text-center">
+                        Hubo un errror</p> }
                         
                     </div>
                 </div>
