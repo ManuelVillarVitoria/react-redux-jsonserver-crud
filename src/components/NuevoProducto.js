@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import  {crearNuevoProductoAction} from '../actions/productoActions'
 
-const NuevoProducto = () => {
+const NuevoProducto = ({history}) => {
 
     const [nombre, guardarNombre] = useState('');
     const [precio, guardarPrecio] = useState(0);
@@ -26,9 +26,11 @@ const NuevoProducto = () => {
             nombre,
             precio
         });
+
+        history.push('/');
     }
 
-    
+
     return (
         <div className="row justify-content-center">
             <div className="col-md-8">
