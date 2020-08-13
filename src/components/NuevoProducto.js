@@ -1,18 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import  {crearNuevoProductoAction} from '../actions/productoActions'
 
 const NuevoProducto = () => {
 
-    const dispatch = useDispatch();
+    const [nombre, guardarNombre] = useState('');
+    const [precio, guardarPrecio] = useState(0);
 
-    const agregarProducto = () => dispatch( crearNuevoProductoAction() );
+    const dispatch = useDispatch();
+    const agregarProducto = producto => dispatch( crearNuevoProductoAction(producto)) ;
 
     const submitNuevoProducto = e => {
         e.preventDefault();
 
-        agregarProducto();
+        if(nombre.trim() === '' || precio <= 0) {
+            return;
+        }
+
+        agregarProducto({
+            nombre,
+            precio
+        });
     }
 
 
@@ -35,6 +44,8 @@ const NuevoProducto = () => {
                                     className="form-control"
                                     placeholder="Nombre Producto"
                                     name="nombre"
+                                    value={nombre}
+                                    onChange={e => guardarNombre(e.target.value)}
                                 />
                             </div>
 
@@ -45,6 +56,8 @@ const NuevoProducto = () => {
                                     className="form-control"
                                     placeholder="Precio Producto"
                                     name="precio"
+                                    value={precio}
+                                    onChange={e => guardarPrecio( Number(e.target.value)) }
                                 />
                             </div>
 
