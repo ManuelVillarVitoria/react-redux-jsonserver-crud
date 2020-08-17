@@ -16,7 +16,7 @@ const Productos = () => {
         cargarProductos();
     }, [])
 
-    const productos = useSelector(state => state.productos.productos);
+    const productos = useSelector(state => state.productos.productos );
     const error = useSelector(state => state.productos.error);
     const cargando = useSelector(state => state.productos.loading);
 
@@ -38,13 +38,13 @@ const Productos = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    { productos.length === 0 ? 'No hay productos' : (
-                        productos.map(producto => (
-                            <Producto 
+                    { productos && productos.length === 0 ? 'No hay productos' : (
+                        productos.map(producto => {
+                            return <Producto 
                                 key={producto.id}
                                 producto={producto}
                             />
-                        ))
+                        })
                     )}
                 </tbody>
             </table>

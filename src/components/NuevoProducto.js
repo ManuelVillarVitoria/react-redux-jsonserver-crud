@@ -13,7 +13,7 @@ const NuevoProducto = ({history}) => {
     const cargando = useSelector(state => state.productos.loading);
     const error = useSelector(state => state.productos.error);
 
-    const agregarProducto = producto => dispatch( crearNuevoProductoAction(producto)) ;
+    const agregarProducto = producto => dispatch( crearNuevoProductoAction(producto));
 
     const submitNuevoProducto = e => {
         e.preventDefault();
@@ -24,7 +24,7 @@ const NuevoProducto = ({history}) => {
 
         agregarProducto({
             nombre,
-            precio,
+            precio
         });
 
         history.push('/');
