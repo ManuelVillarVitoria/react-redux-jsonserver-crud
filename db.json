@@ -199,6 +199,11 @@
       "nombre": "khkjh",
       "precio": 20,
       "id": 40
+    },
+    {
+      "nombre": "pollo",
+      "precio": 25,
+      "id": 41
     }
   ]
 }
