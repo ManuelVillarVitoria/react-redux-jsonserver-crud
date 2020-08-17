@@ -1,12 +1,39 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
+import { editarProductoAction } from '../actions/productoActions';
 
 
 const EditarProducto = () => {
 
-    const producto = useSelector(state => state.productos.productoeditar);
-    if(!producto) return null;
+    const [producto, guardarProducto] = useState ({
+        nombre: '',
+        precio: ''
+    })
+
+    const productoeditar = useSelector(state => state.productos.productoeditar);
+
+
+    useEffect(() => {
+        guardarProducto(productoeditar);
+
+    },[productoeditar]);
+
+    const onChangeFormulario = e => {
+        guardarProducto({
+            ...producto,
+            [e.target.name] : e.target.value
+        })
+    }
+
+
     const { nombre, precio, id } = producto;
+
+    const submitEditarProducto = e => {
+        e.preventDefault();
+
+        editarProductoAction();
+    }
 
     return (
         <div className="row justify-content-center">
@@ -17,15 +44,18 @@ const EditarProducto = () => {
                         Editar Producto
                     </h2>
 
-                    <form>
+                    <form
+                        onSubmit={submitEditarProducto}
+                    >
                         <div className="form-group">
-                            <label>Editar Producto</label>
+                            <label>Nombre Producto</label>
                             <input 
                                 type="text"
                                 className="form-control"
                                 placeholder="Nombre Producto"
                                 name="nombre"
                                 value={nombre}
+                                onChange={onChangeFormulario}
                             />
                         </div>
 
@@ -37,6 +67,7 @@ const EditarProducto = () => {
                                 placeholder="Precio Producto"
                                 name="precio"
                                 value={precio}
+                                onChange={onChangeFormulario}
                             />
                         </div>
 
