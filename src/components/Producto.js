@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 import { useDispatch } from 'react-redux';
-import { borrarProductoAction } from '../actions/productoActions';
+import { borrarProductoAction, obtenerProductoEditar } from '../actions/productoActions';
 
 
 const Producto = ({producto}) => {
@@ -32,6 +32,7 @@ const Producto = ({producto}) => {
 
 
     const redireccionarEdicion = producto => {
+        dispatch( obtenerProductoEditar(producto) );
         history.push(`/productos/editar/${producto.id}`)
 
     }
