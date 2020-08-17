@@ -9,18 +9,17 @@ import {
 
 import clienteAxios from '../config/axios';
 import Swal from 'sweetalert2';
-import Productos from '../components/Productos';
 
 
 export function crearNuevoProductoAction(producto) {
+
     return async (dispatch) => {
         dispatch( agregarProducto() );
 
         try {
             await clienteAxios.post('/productos', producto);
-
             dispatch( agregarProductoExito(producto) );
-
+       
             Swal.fire(
                 'Correcto',
                 'El producto se agregó correctamente',
@@ -64,9 +63,11 @@ export function obtenerProductosAction() {
         dispatch( descargarProductos() );
 
         try {
-            const res = await clienteAxios.get('/productos');
-            dispatch( decargaProductosExitosa(res.data) )
-
+            setTimeout( async () => {
+                const res = await clienteAxios.get('/productos');
+                dispatch( decargaProductosExitosa(res.data) )
+            },1000);
+    
         } catch (error) {
             console.log(error);
             dispatch( descargaProductosError() )

@@ -24,7 +24,7 @@ const NuevoProducto = ({history}) => {
 
         agregarProducto({
             nombre,
-            precio
+            precio,
         });
 
         history.push('/');
