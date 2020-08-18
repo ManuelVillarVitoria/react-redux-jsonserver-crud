@@ -2,8 +2,8 @@
   "productos": [
     {
       "id": 1,
-      "nombre": "Jugo de Zanahoria",
-      "precio": "31111"
+      "nombre": "Carrot juice",
+      "precio": "31"
     },
     {
       "nombre": "Rib Eye 800g",
@@ -16,19 +16,9 @@
       "id": 6
     },
     {
-      "nombre": "k,lkl,kjlkjl",
-      "precio": 25442,
+      "nombre": "Lemon juice",
+      "precio": 35,
       "id": 7
-    },
-    {
-      "nombre": "patos",
-      "precio": "2000",
-      "id": 8
-    },
-    {
-      "nombre": "juhgj",
-      "precio": 254,
-      "id": 9
     }
   ]
 }
